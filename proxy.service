@@ -1,0 +1,14 @@
+[Unit]
+Description=Proxy service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=3
+User=proxy
+ExecStart=/usr/bin/python3 -m proxy --hostname 0.0.0.0 --port 80 --basic-auth login:password
+
+[Install]
+WantedBy=multi-user.target
